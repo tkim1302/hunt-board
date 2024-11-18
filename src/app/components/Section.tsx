@@ -1,4 +1,5 @@
 import AddCardButton from "./AddCardButton";
+import JobCard from "./JobCard";
 
 interface SectionProp {
   sectionName: string;
@@ -11,7 +12,9 @@ const Section: React.FC<SectionProp> = ({ sectionName }) => {
         <h1 className="text-xl">{sectionName}</h1>
         <AddCardButton />
       </div>
-      <div className="flex basis-[80%] flex-col"></div>
+      <div className="flex basis-[80%] flex-col">
+        <JobCard />
+      </div>
     </div>
   );
 };
