@@ -14,7 +14,13 @@ const Home = async () => {
   return (
     <div>
       <NavBar />
-      <Section sectionName="WISHLIST" />
+      <div className="flex">
+        <Section sectionName="WISHLIST" />
+        <Section sectionName="APPLIED" />
+        <Section sectionName="INTERVIEW" />
+        <Section sectionName="OFFER" />
+        <Section sectionName="REJECTED" />
+      </div>
     </div>
   );
 };

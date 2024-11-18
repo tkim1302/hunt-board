@@ -1,3 +1,5 @@
+import AddCardButton from "./AddCardButton";
+
 interface SectionProp {
   sectionName: string;
 }
@@ -5,9 +7,9 @@ interface SectionProp {
 const Section: React.FC<SectionProp> = ({ sectionName }) => {
   return (
     <div className="flex h-screen w-80 flex-col border-r border-black">
-      <div className="flex basis-[20%] flex-col items-center gap-12 border-b border-black pt-10">
-        <h1>{sectionName}</h1>
-        <div>+</div>
+      <div className="flex basis-[20%] flex-col items-center gap-16 border-b border-black pt-10">
+        <h1 className="text-xl">{sectionName}</h1>
+        <AddCardButton />
       </div>
       <div className="flex basis-[80%] flex-col"></div>
     </div>
