@@ -1,6 +1,15 @@
+import { getServerSession } from "next-auth";
 import GoogleSignIn from "./GoogleSignIn";
+import { authOptions } from "@/pages/api/auth/[...nextauth]";
+import { redirect } from "next/navigation";
 
-const page: React.FC = () => {
+const page: React.FC = async () => {
+  const session = await getServerSession(authOptions);
+
+  if (session) {
+    redirect("/");
+  }
+
   return (
     <div className="flex h-screen w-full justify-around">
       <div className="flex basis-[65%] flex-col items-center justify-center gap-24 border-r border-gray-600">
