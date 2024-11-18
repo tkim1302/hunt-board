@@ -1,5 +1,6 @@
 "use client";
 
+import { signOut } from "next-auth/react";
 import { useState } from "react";
 
 const Profile: React.FC = () => {
@@ -8,7 +9,12 @@ const Profile: React.FC = () => {
     <div className="relative w-16 text-center">
       <button onClick={() => setIsOptionOpen(!isOptionOpen)}>Profile</button>
       {isOptionOpen && (
-        <button className="absolute left-0 top-8 border border-black bg-blue-500">
+        <button
+          className="absolute left-0 top-8 border border-black bg-blue-500"
+          onClick={() => {
+            signOut();
+          }}
+        >
           Sign Out
         </button>
       )}
