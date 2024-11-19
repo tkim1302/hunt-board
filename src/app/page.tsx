@@ -14,11 +14,25 @@ const Home = async () => {
   }
 
   const db = (await connectDB).db("HuntBoard");
-
-  let result = await db.collection("Sections").findOne<{
+  const result = await db.collection("Sections").findOne<{
     email: string;
     sections: SectionType[];
-  }>({ email: session!.user!.email });
+  }>({ email: session.user!.email });
+
+  const defaultSections: SectionType[] = [
+    { title: "WISHLIST", jobs: [] },
+    { title: "APPLIED", jobs: [] },
+    { title: "INTERVIEW", jobs: [] },
+    { title: "OFFER", jobs: [] },
+    { title: "REJECTED", jobs: [] },
+  ];
+
+  if (!result?.email) {
+    await db.collection("Sections").insertOne({
+      email: session.user!.email,
+      sections: defaultSections,
+    });
+  }
 
   return (
     <div>
