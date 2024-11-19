@@ -4,15 +4,16 @@ import useModalStore from "../store/modalStore";
 import useSectionStore from "../store/sectionStore";
 
 interface SectionProp {
-  sectionName: string;
+  sectionTitle: string;
 }
-const AddCardButton: React.FC<SectionProp> = ({ sectionName }) => {
+
+const AddCardButton: React.FC<SectionProp> = ({ sectionTitle }) => {
   const { openModal } = useModalStore();
   const { setSection } = useSectionStore();
 
   const handleClick = () => {
     openModal();
-    setSection(sectionName);
+    setSection(sectionTitle);
   };
 
   return (

@@ -42,7 +42,7 @@ const Home = async () => {
       <div className="flex">
         {result &&
           result.sections.map((section) => (
-            <Section key={section.title} sectionName={section.title} />
+            <Section key={section.title} sectionTitle={section.title} />
           ))}
       </div>
       <Modal>
