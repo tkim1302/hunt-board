@@ -11,3 +11,8 @@ export interface Section {
   title: string;
   jobs?: Job[];
 }
+
+export interface Collection {
+  email: string;
+  sections: Section[];
+}

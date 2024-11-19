@@ -10,7 +10,7 @@ const Section: React.FC<SectionProp> = ({ sectionName }) => {
     <div className="flex h-screen w-80 flex-col border-r border-black">
       <div className="flex basis-[20%] flex-col items-center gap-16 border-b border-black pt-10">
         <h1 className="text-xl">{sectionName}</h1>
-        <AddCardButton />
+        <AddCardButton sectionName={sectionName} />
       </div>
       <div className="flex basis-[80%] flex-col">
         <JobCard />

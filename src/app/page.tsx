@@ -5,6 +5,8 @@ import NavBar from "./components/NavBar";
 import Section from "./components/Section";
 import { connectDB } from "../../util/mongodb";
 import { Section as SectionType } from "@/app/types/types";
+import Modal from "./components/Modal";
+import DetailForm from "./components/DetailForm";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -43,6 +45,9 @@ const Home = async () => {
             <Section key={section.title} sectionName={section.title} />
           ))}
       </div>
+      <Modal>
+        <DetailForm />
+      </Modal>
     </div>
   );
 };
