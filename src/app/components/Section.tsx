@@ -17,7 +17,6 @@ const Section: React.FC<SectionProp> = ({ sectionTitle }) => {
       try {
         const res = await fetch(`/api/section/${sectionTitle}`, {
           method: "GET",
-          cache: "no-store",
         });
 
         const data = await res.json();
@@ -36,7 +35,7 @@ const Section: React.FC<SectionProp> = ({ sectionTitle }) => {
         <h1 className="text-xl">{sectionTitle}</h1>
         <AddCardButton sectionTitle={sectionTitle} />
       </div>
-      <div className="flex basis-[80%] flex-col">
+      <div className="mt-6 flex basis-[80%] flex-col items-center gap-6">
         {jobs.map((job) => (
           <JobCard key={job.jobTitle} job={job} />
         ))}
