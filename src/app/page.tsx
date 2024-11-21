@@ -6,7 +6,7 @@ import SectionList from "./components/SectionList";
 import { connectDB } from "../../util/mongodb";
 import { Section as SectionType } from "@/app/types/types";
 import Modal from "./components/Modal";
-import DetailForm from "./components/DetailForm";
+import AddForm from "./components/AddForm";
 import { ObjectId } from "mongodb";
 
 const Home = async () => {
@@ -48,7 +48,7 @@ const Home = async () => {
       <NavBar />
       <SectionList result={transformedResult!} />
       <Modal>
-        <DetailForm />
+        <AddForm />
       </Modal>
     </div>
   );

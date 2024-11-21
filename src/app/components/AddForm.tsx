@@ -2,7 +2,7 @@
 
 import useSectionStore from "../store/sectionStore";
 
-const DetailForm: React.FC = () => {
+const AddForm: React.FC = () => {
   const { selectedSection } = useSectionStore();
 
   return (
@@ -26,4 +26,4 @@ const DetailForm: React.FC = () => {
   );
 };
 
-export default DetailForm;
+export default AddForm;
