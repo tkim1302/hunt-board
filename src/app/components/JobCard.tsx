@@ -1,6 +1,8 @@
 import { Job } from "@/app/types/types";
 import useActiveCardStore from "../store/activeCardStore";
 import DeleteButton from "./DeleteButton";
+import useModalStore from "../store/modalStore";
+import useSectionStore from "../store/sectionStore";
 
 interface JobProp {
   job: Job;
@@ -16,9 +18,17 @@ const JobCard: React.FC<JobProp> = ({
   refreshJobs,
 }) => {
   const { setActiveCard, setSourceSection } = useActiveCardStore();
+  const { openModal, setEditTrue, setSelectedJob } = useModalStore();
+  const { setSection } = useSectionStore();
 
   return (
     <div
+      onClick={() => {
+        openModal();
+        setEditTrue();
+        setSelectedJob(job);
+        setSection(sectionTitle);
+      }}
       draggable
       onDragStart={() => {
         setSourceSection(sectionTitle);
@@ -32,7 +42,7 @@ const JobCard: React.FC<JobProp> = ({
         <h3 className="text-md text-gray-600">{job.company}</h3>
       </div>
       <DeleteButton
-        jobId={job.jobTitle}
+        jobId={job._id}
         sectionTitle={sectionTitle}
         refreshJobs={refreshJobs}
       />

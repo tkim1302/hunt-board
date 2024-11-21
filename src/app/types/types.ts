@@ -1,10 +1,11 @@
 export interface Job {
+  _id: string;
   jobTitle: string;
   company: string;
   postURL?: string;
   salary?: string;
   location?: string;
-  deadline?: Date;
+  deadline?: string;
 }
 
 export interface Section {

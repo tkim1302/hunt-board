@@ -25,7 +25,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     if (sectionIndex !== -1) {
       result.sections[sectionIndex].jobs = result.sections[
         sectionIndex
-      ].jobs.filter((job: Job) => job.jobTitle !== jobId);
+      ].jobs.filter((job: Job) => job._id !== jobId);
     } else {
       return res.status(404).json({ error: "Section Not Found" });
     }

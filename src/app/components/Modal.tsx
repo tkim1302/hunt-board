@@ -1,14 +1,11 @@
 "use client";
 
-import { ReactNode } from "react";
 import useModalStore from "../store/modalStore";
+import AddForm from "./AddForm";
+import EditForm from "./EditForm";
 
-interface ModalProps {
-  children: ReactNode;
-}
-
-const Modal: React.FC<ModalProps> = ({ children }) => {
-  const { isOpen, closeModal } = useModalStore();
+const Modal: React.FC = () => {
+  const { isOpen, isEdit, closeModal, setEditFalse } = useModalStore();
 
   return (
     isOpen && (
@@ -16,11 +13,14 @@ const Modal: React.FC<ModalProps> = ({ children }) => {
         <div className="relative h-4/5 w-3/4 bg-white">
           <button
             className="absolute right-8 top-5 text-4xl"
-            onClick={closeModal}
+            onClick={() => {
+              closeModal();
+              setEditFalse();
+            }}
           >
             x
           </button>
-          {children}
+          {isEdit ? <EditForm /> : <AddForm />}
         </div>
       </div>
     )

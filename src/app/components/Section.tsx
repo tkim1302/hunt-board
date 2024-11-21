@@ -1,5 +1,3 @@
-"use client";
-
 import React from "react";
 import AddCardButton from "./AddCardButton";
 import JobCard from "./JobCard";
@@ -57,7 +55,7 @@ const Section: React.FC<SectionProp> = ({
       <div className="flex basis-[80%] flex-col items-center gap-6">
         <DropArea onDrop={() => onDrop(sectionTitle, 0)} />
         {jobs.map((job, index) => (
-          <div key={job.jobTitle}>
+          <div key={job._id}>
             <JobCard
               job={job}
               index={index}

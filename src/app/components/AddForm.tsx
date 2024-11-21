@@ -1,5 +1,3 @@
-"use client";
-
 import useSectionStore from "../store/sectionStore";
 
 const AddForm: React.FC = () => {
@@ -18,7 +16,7 @@ const AddForm: React.FC = () => {
         <input name="postURL" placeholder="Post URL" />
         <input name="salary" placeholder="Salary" />
         <input name="location" placeholder="Location" />
-        <input name="deadline" placeholder="Deadline" />
+        <input type="date" name="deadline" placeholder="Deadline" />
         <input type="hidden" name="section" value={selectedSection} />
         <button type="submit">Save</button>
       </form>
