@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 
-interface AreaInterface {
+interface DropAreaProps {
   onDrop: () => void;
 }
 
-const DropArea: React.FC<AreaInterface> = ({ onDrop }) => {
+const DropArea: React.FC<DropAreaProps> = ({ onDrop }) => {
   const [showArea, setShowArea] = useState(false);
 
   return (

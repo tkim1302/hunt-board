@@ -58,7 +58,12 @@ const Section: React.FC<SectionProp> = ({
         <DropArea onDrop={() => onDrop(sectionTitle, 0)} />
         {jobs.map((job, index) => (
           <div key={job.jobTitle}>
-            <JobCard job={job} index={index} sectionTitle={sectionTitle} />
+            <JobCard
+              job={job}
+              index={index}
+              sectionTitle={sectionTitle}
+              refreshJobs={refreshJobs}
+            />
             <DropArea onDrop={() => onDrop(sectionTitle, index + 1)} />
           </div>
         ))}
