@@ -1,33 +1,52 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import React from "react";
 import AddCardButton from "./AddCardButton";
 import JobCard from "./JobCard";
+import DropArea from "./DropArea";
 import { Job } from "@/app/types/types";
+import useActiveCardStore from "../store/activeCardStore";
 
 interface SectionProp {
   sectionTitle: string;
+  jobs: Job[] | [];
+  refreshJobs: () => void;
 }
 
-const Section: React.FC<SectionProp> = ({ sectionTitle }) => {
-  const [jobs, setJobs] = useState<Job[]>([]);
+const Section: React.FC<SectionProp> = ({
+  sectionTitle,
+  jobs,
+  refreshJobs,
+}) => {
+  const { activeCard, sourceSection } = useActiveCardStore();
 
-  useEffect(() => {
-    const fetchJobs = async () => {
-      try {
-        const res = await fetch(`/api/section/${sectionTitle}`, {
-          method: "GET",
-        });
+  const onDrop = async (
+    destinationSection: string,
+    destinationIndex: number,
+  ) => {
+    const sourceIndex = activeCard;
 
-        const data = await res.json();
-        setJobs(data);
-      } catch (error: any) {
-        throw new Error(error.message);
+    try {
+      const response = await fetch("/api/job/update", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sourceSection,
+          destinationSection,
+          sourceIndex,
+          destinationIndex,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Failed to update job position");
       }
-    };
 
-    fetchJobs();
-  }, [sectionTitle]);
+      refreshJobs();
+    } catch (error) {
+      alert("Error fetching data. Please try again later");
+    }
+  };
 
   return (
     <div className="flex h-screen w-80 flex-col border-r border-black">
@@ -35,9 +54,13 @@ const Section: React.FC<SectionProp> = ({ sectionTitle }) => {
         <h1 className="text-xl">{sectionTitle}</h1>
         <AddCardButton sectionTitle={sectionTitle} />
       </div>
-      <div className="mt-6 flex basis-[80%] flex-col items-center gap-6">
-        {jobs.map((job) => (
-          <JobCard key={job.jobTitle} job={job} />
+      <div className="flex basis-[80%] flex-col items-center gap-6">
+        <DropArea onDrop={() => onDrop(sectionTitle, 0)} />
+        {jobs.map((job, index) => (
+          <div key={job.jobTitle}>
+            <JobCard job={job} index={index} sectionTitle={sectionTitle} />
+            <DropArea onDrop={() => onDrop(sectionTitle, index + 1)} />
+          </div>
         ))}
       </div>
     </div>

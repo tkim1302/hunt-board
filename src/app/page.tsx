@@ -2,11 +2,12 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import NavBar from "./components/NavBar";
-import Section from "./components/Section";
+import SectionList from "./components/SectionList";
 import { connectDB } from "../../util/mongodb";
 import { Section as SectionType } from "@/app/types/types";
 import Modal from "./components/Modal";
 import DetailForm from "./components/DetailForm";
+import { ObjectId } from "mongodb";
 
 const Home = async () => {
   const session = await getServerSession(authOptions);
@@ -19,6 +20,7 @@ const Home = async () => {
   const result = await db.collection("Sections").findOne<{
     email: string;
     sections: SectionType[];
+    _id: ObjectId;
   }>({ email: session.user!.email });
 
   const defaultSections: SectionType[] = [
@@ -36,15 +38,15 @@ const Home = async () => {
     });
   }
 
+  const transformedResult = {
+    ...result!,
+    _id: result!._id.toString(),
+  };
+
   return (
     <div>
       <NavBar />
-      <div className="flex">
-        {result &&
-          result.sections.map((section) => (
-            <Section key={section.title} sectionTitle={section.title} />
-          ))}
-      </div>
+      <SectionList result={transformedResult!} />
       <Modal>
         <DetailForm />
       </Modal>
