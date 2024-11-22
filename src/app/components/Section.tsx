@@ -41,13 +41,13 @@ const Section: React.FC<SectionProp> = ({
       }
 
       refreshJobs();
-    } catch (error) {
+    } catch {
       alert("Error fetching data. Please try again later");
     }
   };
 
   return (
-    <div className="flex h-screen w-80 flex-col border-r border-black">
+    <div className="flex h-screen w-80 min-w-80 flex-col border-r border-black">
       <div className="flex basis-[20%] flex-col items-center gap-16 border-b border-black pt-10">
         <h1 className="text-xl">{sectionTitle}</h1>
         <AddCardButton sectionTitle={sectionTitle} />
