@@ -27,7 +27,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const sectionIndex = result.sections.findIndex(
-      (ele: Section) => ele.title === section,
+      (ele: Section) => ele._id === section,
     );
 
     const newJob: Job = {
@@ -46,6 +46,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       result.sections[sectionIndex].jobs.push(newJob);
     } else {
       const newSection = {
+        _id: new ObjectId().toString(),
         title: section,
         jobs: [newJob],
       };

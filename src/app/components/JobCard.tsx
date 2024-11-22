@@ -7,16 +7,11 @@ import useSectionStore from "../store/sectionStore";
 interface JobProp {
   job: Job;
   index: number;
-  sectionTitle: string;
+  sectionId: string;
   refreshJobs: () => void;
 }
 
-const JobCard: React.FC<JobProp> = ({
-  job,
-  index,
-  sectionTitle,
-  refreshJobs,
-}) => {
+const JobCard: React.FC<JobProp> = ({ job, index, sectionId, refreshJobs }) => {
   const { setActiveCard, setSourceSection } = useActiveCardStore();
   const { openModal, setEditTrue, setSelectedJob } = useModalStore();
   const { setSection } = useSectionStore();
@@ -27,11 +22,11 @@ const JobCard: React.FC<JobProp> = ({
         openModal();
         setEditTrue();
         setSelectedJob(job);
-        setSection(sectionTitle);
+        setSection(sectionId);
       }}
       draggable
       onDragStart={() => {
-        setSourceSection(sectionTitle);
+        setSourceSection(sectionId);
         setActiveCard(index);
       }}
       onDragEnd={() => setActiveCard(null)}
@@ -43,7 +38,7 @@ const JobCard: React.FC<JobProp> = ({
       </div>
       <DeleteButton
         jobId={job._id}
-        sectionTitle={sectionTitle}
+        sectionId={sectionId}
         refreshJobs={refreshJobs}
       />
     </div>

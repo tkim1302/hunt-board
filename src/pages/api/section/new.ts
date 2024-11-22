@@ -3,6 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
 import { connectDB } from "../../../../util/mongodb";
 import { Section } from "@/app/types/types";
+import { ObjectId } from "mongodb";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
@@ -17,7 +18,11 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         email,
       });
 
-    result!.sections.push({ title: "", jobs: [] });
+    result!.sections.push({
+      _id: new ObjectId().toString(),
+      title: "",
+      jobs: [],
+    });
 
     await db
       .collection("Sections")

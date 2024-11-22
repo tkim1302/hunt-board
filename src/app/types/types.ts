@@ -9,6 +9,7 @@ export interface Job {
 }
 
 export interface Section {
+  _id: string;
   title: string;
   jobs?: Job[];
 }

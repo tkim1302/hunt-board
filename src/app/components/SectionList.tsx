@@ -26,9 +26,10 @@ const SectionList = () => {
   return (
     <div className="overflow-x-auto">
       <div className="flex">
-        {sections.map(({ title, jobs }) => (
+        {sections.map(({ _id, title, jobs }) => (
           <Section
-            key={title}
+            key={_id}
+            sectionId={_id}
             sectionTitle={title}
             jobs={jobs!}
             refreshJobs={() => fetchSections()}

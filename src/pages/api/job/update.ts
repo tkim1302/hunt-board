@@ -20,10 +20,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const source = result.sections.find(
-      (ele: Section) => ele.title === sourceSection,
+      (ele: Section) => ele._id === sourceSection,
     );
     const destination = result.sections.find(
-      (ele: Section) => ele.title === destinationSection,
+      (ele: Section) => ele._id === destinationSection,
     );
 
     if (!source || !destination) {

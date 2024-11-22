@@ -6,7 +6,7 @@ import { Job, Section } from "@/app/types/types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "DELETE") {
-    const { jobId, sectionTitle } = req.body;
+    const { jobId, sectionId } = req.body;
 
     const session = await getServerSession(req, res, authOptions);
     const email = session?.user?.email;
@@ -19,7 +19,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const sectionIndex = result.sections.findIndex(
-      (ele: Section) => ele.title === sectionTitle,
+      (ele: Section) => ele._id === sectionId,
     );
 
     if (sectionIndex !== -1) {

@@ -6,12 +6,14 @@ import { Job } from "@/app/types/types";
 import useActiveCardStore from "../store/activeCardStore";
 
 interface SectionProp {
+  sectionId: string;
   sectionTitle: string;
   jobs: Job[] | [];
   refreshJobs: () => void;
 }
 
 const Section: React.FC<SectionProp> = ({
+  sectionId,
   sectionTitle,
   jobs,
   refreshJobs,
@@ -50,19 +52,19 @@ const Section: React.FC<SectionProp> = ({
     <div className="flex h-screen w-80 min-w-80 flex-col border-r border-black">
       <div className="flex basis-[20%] flex-col items-center gap-16 border-b border-black pt-10">
         <h1 className="text-xl">{sectionTitle}</h1>
-        <AddCardButton sectionTitle={sectionTitle} />
+        <AddCardButton sectionId={sectionId} />
       </div>
       <div className="flex basis-[80%] flex-col items-center gap-6">
-        <DropArea onDrop={() => onDrop(sectionTitle, 0)} />
+        <DropArea onDrop={() => onDrop(sectionId, 0)} />
         {jobs.map((job, index) => (
           <div key={job._id}>
             <JobCard
               job={job}
               index={index}
-              sectionTitle={sectionTitle}
+              sectionId={sectionId}
               refreshJobs={refreshJobs}
             />
-            <DropArea onDrop={() => onDrop(sectionTitle, index + 1)} />
+            <DropArea onDrop={() => onDrop(sectionId, index + 1)} />
           </div>
         ))}
       </div>

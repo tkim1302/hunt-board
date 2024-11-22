@@ -1,12 +1,12 @@
 interface DeleteButtonProps {
   jobId: string;
-  sectionTitle: string;
+  sectionId: string;
   refreshJobs: () => void;
 }
 
 const DeleteButton: React.FC<DeleteButtonProps> = ({
   jobId,
-  sectionTitle,
+  sectionId,
   refreshJobs,
 }) => {
   const deleteCard = async () => {
@@ -14,7 +14,7 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
       const response = await fetch("/api/job/delete", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ jobId, sectionTitle }),
+        body: JSON.stringify({ jobId, sectionId }),
       });
 
       if (!response.ok) {
