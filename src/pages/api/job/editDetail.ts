@@ -32,7 +32,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     const sectionIndex = result.sections.findIndex(
-      (ele: Section) => ele.title === section,
+      (ele: Section) => ele._id === section,
     );
 
     if (sectionIndex === -1) {
