@@ -32,7 +32,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
     await db
       .collection("Sections")
-      .updateOne({ email }, { $set: { sections: result.sections } });
+      .updateOne(
+        { email },
+        { $set: { sections: result.sections, lastUpdated: new Date() } },
+      );
 
     return res.status(200).redirect("/");
   }

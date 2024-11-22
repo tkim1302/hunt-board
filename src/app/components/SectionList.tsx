@@ -3,9 +3,12 @@ import { useEffect, useState } from "react";
 import { Section as SectionType } from "@/app/types/types";
 import Section from "./Section";
 import AddSection from "./AddSection";
+import useLastUpdatedTimeStore from "../store/lastUpdatedTimeStore";
 
 const SectionList = () => {
   const [sections, setSections] = useState<SectionType[]>([]);
+  const { SetLastUpdated } = useLastUpdatedTimeStore();
+
   const fetchSections = async () => {
     try {
       const response = await fetch("/api/section/get");
@@ -14,6 +17,7 @@ const SectionList = () => {
       }
       const result = await response.json();
       setSections(result.sections);
+      SetLastUpdated(result.lastUpdated);
     } catch {
       alert("Error fetching data. Please try again later");
     }
