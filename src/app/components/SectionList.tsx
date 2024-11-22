@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Section as SectionType } from "@/app/types/types";
 import Section from "./Section";
+import AddSection from "./AddSection";
 
 const SectionList = () => {
   const [sections, setSections] = useState<SectionType[]>([]);
@@ -33,6 +34,7 @@ const SectionList = () => {
             refreshJobs={() => fetchSections()}
           />
         ))}
+        <AddSection refreshJobs={fetchSections} />
       </div>
     </div>
   );
