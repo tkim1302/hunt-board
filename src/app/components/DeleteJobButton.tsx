@@ -1,10 +1,10 @@
-interface DeleteButtonProps {
+interface DeleteJobButtonProps {
   jobId: string;
   sectionId: string;
   refreshJobs: () => void;
 }
 
-const DeleteButton: React.FC<DeleteButtonProps> = ({
+const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
   jobId,
   sectionId,
   refreshJobs,
@@ -29,4 +29,4 @@ const DeleteButton: React.FC<DeleteButtonProps> = ({
   return <button onClick={() => deleteCard()}>🗑️</button>;
 };
 
-export default DeleteButton;
+export default DeleteJobButton;

@@ -1,8 +1,8 @@
 import { Job } from "@/app/types/types";
 import useActiveCardStore from "../store/activeCardStore";
-import DeleteButton from "./DeleteButton";
 import useModalStore from "../store/modalStore";
 import useSectionStore from "../store/sectionStore";
+import DeleteJobButton from "./DeleteJobButton";
 
 interface JobProp {
   job: Job;
@@ -36,7 +36,7 @@ const JobCard: React.FC<JobProp> = ({ job, index, sectionId, refreshJobs }) => {
         <h2 className="text-xl">{job.jobTitle}</h2>
         <h3 className="text-md text-gray-600">{job.company}</h3>
       </div>
-      <DeleteButton
+      <DeleteJobButton
         jobId={job._id}
         sectionId={sectionId}
         refreshJobs={refreshJobs}

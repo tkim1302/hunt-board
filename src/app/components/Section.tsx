@@ -5,6 +5,7 @@ import DropArea from "./DropArea";
 import { Job } from "@/app/types/types";
 import useActiveCardStore from "../store/activeCardStore";
 import SectionTitle from "./SectionTitle";
+import DeleteSectionButton from "./DeleteSectionButton";
 
 interface SectionProp {
   sectionId: string;
@@ -57,6 +58,7 @@ const Section: React.FC<SectionProp> = ({
           sectionTitle={sectionTitle}
           refreshJobs={refreshJobs}
         />
+        <DeleteSectionButton sectionId={sectionId} refreshJobs={refreshJobs} />
         <AddCardButton sectionId={sectionId} />
       </div>
       <div className="flex basis-[80%] flex-col items-center gap-6">
