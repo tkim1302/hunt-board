@@ -1,13 +1,13 @@
 import { create } from "zustand";
 
 interface timeState {
-  lastUpdated: string;
-  SetLastUpdated: (lastUpdated: string) => void;
+  lastUpdated: Date | null;
+  SetLastUpdated: (lastUpdated: Date) => void;
 }
 
 const useLastUpdatedTimeStore = create<timeState>((set) => ({
-  lastUpdated: "",
-  SetLastUpdated: (time: string) => set({ lastUpdated: time }),
+  lastUpdated: null,
+  SetLastUpdated: (time: Date) => set({ lastUpdated: time }),
 }));
 
 export default useLastUpdatedTimeStore;
