@@ -9,11 +9,22 @@ const Modal: React.FC = () => {
 
   return (
     isOpen && (
-      <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-        <div className="relative h-4/5 w-3/4 bg-white">
+      <div
+        onClick={() => {
+          closeModal();
+          setEditFalse();
+        }}
+        className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
+      >
+        <div
+          onClick={(e) => {
+            e.stopPropagation();
+          }}
+          className="relative h-4/5 w-3/4 bg-white"
+        >
           <button
             className="absolute right-8 top-5 text-4xl"
-            onClick={() => {
+            onClick={(e) => {
               closeModal();
               setEditFalse();
             }}
