@@ -26,7 +26,16 @@ const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
     }
   };
 
-  return <button onClick={() => deleteCard()}>🗑️</button>;
+  return (
+    <button
+      onClick={(e) => {
+        deleteCard();
+        e.stopPropagation();
+      }}
+    >
+      🗑️
+    </button>
+  );
 };
 
 export default DeleteJobButton;
