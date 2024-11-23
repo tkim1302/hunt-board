@@ -18,7 +18,7 @@ const AddCardButton: React.FC<SectionProp> = ({ sectionId }) => {
 
   return (
     <button
-      className="w-48 rounded-xl border border-gray-500 text-2xl shadow-md"
+      className="w-48 rounded-xl border border-gray-500 text-2xl shadow-md hover:text-blue-500"
       onClick={handleClick}
     >
       +

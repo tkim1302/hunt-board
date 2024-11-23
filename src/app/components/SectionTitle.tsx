@@ -40,7 +40,7 @@ const SectionTitle: React.FC<SectionTitleProps> = ({
     <input
       onBlur={() => handleSubmit()}
       onChange={(e) => setNewTitle(e.target.value)}
-      className="text-xl"
+      className="w-48 truncate text-center text-xl hover:bg-gray-100 focus:bg-gray-100"
       value={newTitle}
     />
   );
