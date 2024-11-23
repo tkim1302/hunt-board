@@ -5,18 +5,22 @@ import useModalStore from "../store/modalStore";
 import useSectionStore from "../store/sectionStore";
 
 const EditForm: React.FC = () => {
-  const { selectedSection } = useSectionStore();
-  const { selectedJob } = useModalStore();
-  const { setSectionList } = useSectionStore();
+  const { selectedSection, setSectionList } = useSectionStore();
+  const { selectedJob, closeModal } = useModalStore();
   const { SetLastUpdated } = useLastUpdatedTimeStore();
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    await submitForm(event, "edit");
+    fetchSections(setSectionList, SetLastUpdated);
+    closeModal();
+  };
 
   return (
     <div className="flex flex-col">
       <h4>Edit!!!!</h4>
       <form
-        onSubmit={async (event) => {
-          await submitForm(event, "edit");
-          fetchSections(setSectionList, SetLastUpdated);
+        onSubmit={(event) => {
+          handleSubmit(event);
         }}
         className="flex flex-col gap-10"
         action="/api/job/editDetail"
