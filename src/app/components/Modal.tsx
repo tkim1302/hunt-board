@@ -17,14 +17,14 @@ const Modal: React.FC = () => {
         className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
       >
         <div
-          onClick={(e) => {
-            e.stopPropagation();
+          onClick={(event) => {
+            event.stopPropagation();
           }}
           className="relative h-4/5 w-3/4 bg-white"
         >
           <button
             className="absolute right-8 top-5 text-4xl"
-            onClick={(e) => {
+            onClick={() => {
               closeModal();
               setEditFalse();
             }}

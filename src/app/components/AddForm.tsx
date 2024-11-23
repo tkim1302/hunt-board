@@ -1,12 +1,21 @@
+import fetchSections from "../../../util/fetchSections";
+import submitForm from "../../../util/submitForm";
+import useLastUpdatedTimeStore from "../store/lastUpdatedTimeStore";
 import useSectionStore from "../store/sectionStore";
 
 const AddForm: React.FC = () => {
   const { selectedSection } = useSectionStore();
+  const { setSectionList } = useSectionStore();
+  const { SetLastUpdated } = useLastUpdatedTimeStore();
 
   return (
     <div className="flex flex-col">
       <h4>Details</h4>
       <form
+        onSubmit={async (event) => {
+          await submitForm(event, "add");
+          fetchSections(setSectionList, SetLastUpdated);
+        }}
         className="flex flex-col gap-10"
         action="/api/job/new"
         method="POST"

@@ -1,45 +1,43 @@
 "use client";
+
 import { useEffect, useState } from "react";
-import { Section as SectionType } from "@/app/types/types";
 import Section from "./Section";
 import AddSection from "./AddSection";
 import useLastUpdatedTimeStore from "../store/lastUpdatedTimeStore";
+import Loading from "./Loading";
+import useSectionStore from "../store/sectionStore";
+import fetchSections from "../../../util/fetchSections";
 
 const SectionList = () => {
-  const [sections, setSections] = useState<SectionType[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const { sectionList, setSectionList } = useSectionStore();
   const { SetLastUpdated } = useLastUpdatedTimeStore();
 
-  const fetchSections = async () => {
-    try {
-      const response = await fetch("/api/section/get");
-      if (!response.ok) {
-        throw new Error("Failed to fetch sections data");
-      }
-      const result = await response.json();
-      setSections(result.sections);
-      SetLastUpdated(result.lastUpdated);
-    } catch {
-      alert("Error fetching data. Please try again later");
-    }
-  };
-
   useEffect(() => {
-    fetchSections();
+    fetchSections(setSectionList, SetLastUpdated);
+    setIsLoading(false);
   }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   return (
     <div className="overflow-x-auto">
       <div className="flex">
-        {sections.map(({ _id, title, jobs }) => (
+        {sectionList.map(({ _id, title, jobs }) => (
           <Section
             key={_id}
             sectionId={_id}
             sectionTitle={title}
             jobs={jobs!}
-            refreshJobs={() => fetchSections()}
+            refreshJobs={() => fetchSections(setSectionList, SetLastUpdated)}
           />
         ))}
-        <AddSection refreshJobs={fetchSections} />
+        <AddSection
+          refreshJobs={() => fetchSections(setSectionList, SetLastUpdated)}
+        />
       </div>
     </div>
   );

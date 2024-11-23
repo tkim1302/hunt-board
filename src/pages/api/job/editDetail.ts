@@ -5,7 +5,7 @@ import { authOptions } from "../auth/[...nextauth]";
 import { Job, Section } from "@/app/types/types";
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method === "POST") {
+  if (req.method === "PATCH") {
     const {
       _id,
       jobTitle,
