@@ -61,7 +61,7 @@ const Section: React.FC<SectionProp> = ({
         <DeleteSectionButton sectionId={sectionId} refreshJobs={refreshJobs} />
         <AddCardButton sectionId={sectionId} />
       </div>
-      <div className="flex basis-[80%] flex-col items-center gap-6">
+      <div className="flex basis-[80%] flex-col items-center gap-6 overflow-y-auto">
         <DropArea onDrop={() => onDrop(sectionId, 0)} />
         {jobs.map((job, index) => (
           <div key={job._id}>
