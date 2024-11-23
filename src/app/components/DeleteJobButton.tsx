@@ -1,3 +1,8 @@
+"use client";
+
+import Image from "next/image";
+import { useState } from "react";
+
 interface DeleteJobButtonProps {
   jobId: string;
   sectionId: string;
@@ -9,6 +14,8 @@ const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
   sectionId,
   refreshJobs,
 }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   const deleteCard = async () => {
     try {
       const response = await fetch("/api/job/delete", {
@@ -32,8 +39,24 @@ const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
         deleteCard();
         e.stopPropagation();
       }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseOut={() => setIsHovered(false)}
     >
-      🗑️
+      {!isHovered ? (
+        <Image
+          src="/trashBin_light.png"
+          width={20}
+          height={20}
+          alt="logo-trash-bin.png"
+        />
+      ) : (
+        <Image
+          src="/trashBin_light_hover.png"
+          width={20}
+          height={20}
+          alt="logo-trash-bin.png"
+        />
+      )}
     </button>
   );
 };
