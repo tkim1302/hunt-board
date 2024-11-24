@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import Image from "next/image";
 
-const GoogleSignIn: React.FC = () => {
+const SignIn: React.FC = () => {
   return (
     <div
       onClick={() => {
@@ -17,4 +17,4 @@ const GoogleSignIn: React.FC = () => {
   );
 };
 
-export default GoogleSignIn;
+export default SignIn;

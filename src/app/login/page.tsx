@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth";
-import GoogleSignIn from "./GoogleSignIn";
+import SignIn from "./SignIn";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { redirect } from "next/navigation";
 
@@ -20,7 +20,7 @@ const page: React.FC = async () => {
       </div>
       <div className="flex basis-[35%] flex-col items-center justify-center gap-16">
         <h4 className="text-4xl font-semibold">LET&apos;S GET STARTED!</h4>
-        <GoogleSignIn />
+        <SignIn />
       </div>
     </div>
   );
