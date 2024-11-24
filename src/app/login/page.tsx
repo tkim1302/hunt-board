@@ -13,7 +13,7 @@ const page: React.FC = async () => {
   return (
     <div className="flex h-screen w-full justify-around">
       <div className="flex basis-[65%] flex-col items-center justify-center gap-24 border-r border-gray-600">
-        <h1 className="font-abril text-8xl text-blue-500">HuntBoard</h1>
+        <h1 className="font-dela text-8xl text-blue-500">HuntBoard</h1>
         <h2 className="w-3/5 text-center text-5xl">
           A POWERFUL TOOL TO TRACK YOUR JOB APPLICATIONS
         </h2>

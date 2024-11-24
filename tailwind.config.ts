@@ -13,7 +13,7 @@ export default {
         foreground: "var(--foreground)",
       },
       fontFamily: {
-        abril: ['"Abril Fatface"'],
+        dela: ["Dela Gothic One"],
       },
     },
   },
