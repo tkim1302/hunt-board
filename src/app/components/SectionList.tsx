@@ -24,8 +24,8 @@ const SectionList = () => {
   }
 
   return (
-    <div className="overflow-x-auto">
-      <div className="flex">
+    <div className="h-full overflow-x-auto">
+      <div className="ml-10 flex gap-10">
         {sectionList.map(({ _id, title, jobs }) => (
           <Section
             key={_id}

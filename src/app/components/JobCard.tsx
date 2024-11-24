@@ -30,7 +30,7 @@ const JobCard: React.FC<JobProp> = ({ job, index, sectionId, refreshJobs }) => {
         setActiveCard(index);
       }}
       onDragEnd={() => setActiveCard(null)}
-      className="group mb-4 flex h-20 w-48 cursor-grab rounded-xl border border-gray-500 pb-3 pl-2 pr-10 pt-3 shadow-md transition-transform duration-200 ease-in-out hover:-translate-y-2"
+      className="group mb-4 flex h-20 w-60 cursor-grab rounded-xl border border-gray-500 pb-3 pl-2 pr-10 pt-3 shadow-md transition-transform duration-200 ease-in-out hover:-translate-y-2"
     >
       <div className="overflow-hidden border-l-4 border-gray-300 pl-3 group-hover:border-blue-500">
         <h2 className="truncate text-xl">{job.jobTitle}</h2>
