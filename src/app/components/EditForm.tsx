@@ -17,7 +17,6 @@ const EditForm: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <h4>Edit!!!!</h4>
       <form
         onSubmit={(event) => {
           handleSubmit(event);
@@ -28,40 +27,51 @@ const EditForm: React.FC = () => {
       >
         <input type="hidden" name="_id" value={selectedJob!._id} />
         <input
+          className="text-6xl"
           name="jobTitle"
           required
           defaultValue={selectedJob!.jobTitle}
-          placeholder="Job Title"
+          placeholder="Job Title (Required)"
         />
         <input
+          className="text-3xl"
           name="company"
           required
           defaultValue={selectedJob!.company}
-          placeholder="Company"
+          placeholder="Company (Required)"
         />
-        <input
-          name="postURL"
-          defaultValue={selectedJob!.postURL}
-          placeholder="Post URL"
-        />
-        <input
-          name="salary"
-          defaultValue={selectedJob!.salary}
-          placeholder="Salary"
-        />
-        <input
-          name="location"
-          defaultValue={selectedJob!.location}
-          placeholder="Location"
-        />
-        <input
-          type="date"
-          name="deadline"
-          defaultValue={selectedJob!.deadline}
-          placeholder="Deadline"
-        />
+        <div className="mt-10 flex flex-col gap-10 text-lg">
+          <input
+            name="postURL"
+            defaultValue={selectedJob!.postURL}
+            placeholder="Post URL"
+          />
+          <input
+            name="salary"
+            defaultValue={selectedJob!.salary}
+            placeholder="Salary"
+          />
+          <input
+            name="location"
+            defaultValue={selectedJob!.location}
+            placeholder="Location"
+          />
+          <input
+            type="date"
+            name="deadline"
+            defaultValue={selectedJob!.deadline}
+            placeholder="Deadline"
+          />
+        </div>
         <input type="hidden" name="section" value={selectedSection} />
-        <button type="submit">Save</button>
+        <div className="flex justify-center">
+          <button
+            className="mt-20 h-12 w-20 rounded-xl bg-blue-500 text-2xl text-white"
+            type="submit"
+          >
+            Save
+          </button>
+        </div>
       </form>
     </div>
   );

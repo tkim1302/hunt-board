@@ -20,7 +20,7 @@ const Modal: React.FC = () => {
           onClick={(event) => {
             event.stopPropagation();
           }}
-          className="relative h-4/5 w-3/4 bg-white"
+          className="min-h-5/6 min-w-3/5 relative rounded-xl bg-white pb-14 pl-20 pr-20 pt-20"
         >
           <button
             className="absolute right-8 top-5 text-4xl"

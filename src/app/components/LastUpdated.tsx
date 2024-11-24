@@ -7,7 +7,7 @@ const LastUpdated: React.FC = () => {
   const { lastUpdated } = useLastUpdatedTimeStore();
 
   return (
-    <p className="text-gray-400">
+    <p className="truncate text-gray-400">
       {lastUpdated
         ? `last updated: ${formatDistanceToNow(lastUpdated)} ago`
         : ""}
