@@ -21,21 +21,23 @@ const Profile: React.FC<ProfileProps> = ({ session }) => {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
 
   return (
-    <div className="relative flex w-16 items-center justify-center text-center">
-      <button
-        className="h-11 w-11 rounded-full bg-blue-500 font-semibold text-white"
-        onClick={() => setIsOptionOpen(!isOptionOpen)}
-      >
-        {getInitials(session?.user!.name)}
-      </button>
-      {isOptionOpen && (
+    <div className="flex w-16 items-center justify-center text-center">
+      {isOptionOpen ? (
         <button
-          className="absolute left-0 top-8 border border-black bg-blue-500"
+          onMouseOut={() => setIsOptionOpen(false)}
+          className="h-12 w-24 rounded-xl bg-blue-500 pl-2 pr-2 text-white"
           onClick={() => {
             signOut();
           }}
         >
           Sign Out
+        </button>
+      ) : (
+        <button
+          className="h-12 w-12 rounded-full bg-blue-500 font-semibold text-white"
+          onClick={() => setIsOptionOpen(true)}
+        >
+          {getInitials(session?.user!.name)}
         </button>
       )}
     </div>
