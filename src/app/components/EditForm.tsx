@@ -29,11 +29,13 @@ const EditForm: React.FC = () => {
         <input type="hidden" name="_id" value={selectedJob!._id} />
         <input
           name="jobTitle"
+          required
           defaultValue={selectedJob!.jobTitle}
           placeholder="Job Title"
         />
         <input
           name="company"
+          required
           defaultValue={selectedJob!.company}
           placeholder="Company"
         />

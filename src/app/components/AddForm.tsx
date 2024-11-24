@@ -26,8 +26,8 @@ const AddForm: React.FC = () => {
         action="/api/job/new"
         method="POST"
       >
-        <input name="jobTitle" placeholder="Job Title" />
-        <input name="company" placeholder="Company" />
+        <input name="jobTitle" required placeholder="Job Title" />
+        <input name="company" required placeholder="Company" />
         <input name="postURL" placeholder="Post URL" />
         <input name="salary" placeholder="Salary" />
         <input name="location" placeholder="Location" />
