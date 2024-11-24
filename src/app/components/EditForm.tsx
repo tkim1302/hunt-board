@@ -27,14 +27,14 @@ const EditForm: React.FC = () => {
       >
         <input type="hidden" name="_id" value={selectedJob!._id} />
         <input
-          className="text-6xl"
+          className="text-6xl dark:bg-gray-600 dark:text-gray-200"
           name="jobTitle"
           required
           defaultValue={selectedJob!.jobTitle}
           placeholder="Job Title (Required)"
         />
         <input
-          className="text-3xl"
+          className="text-3xl dark:bg-gray-600 dark:text-gray-200"
           name="company"
           required
           defaultValue={selectedJob!.company}
@@ -42,21 +42,25 @@ const EditForm: React.FC = () => {
         />
         <div className="mt-10 flex flex-col gap-10 text-lg">
           <input
+            className="dark:bg-gray-600 dark:text-gray-200"
             name="postURL"
             defaultValue={selectedJob!.postURL}
             placeholder="Post URL"
           />
           <input
+            className="dark:bg-gray-600 dark:text-gray-200"
             name="salary"
             defaultValue={selectedJob!.salary}
             placeholder="Salary"
           />
           <input
+            className="dark:bg-gray-600 dark:text-gray-200"
             name="location"
             defaultValue={selectedJob!.location}
             placeholder="Location"
           />
           <input
+            className="dark:bg-gray-600 dark:text-gray-200"
             type="date"
             name="deadline"
             defaultValue={selectedJob!.deadline}

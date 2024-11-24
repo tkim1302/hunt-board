@@ -10,7 +10,9 @@ const NavBar: React.FC = async () => {
   return (
     <div className="flex h-16 w-full items-center justify-between pl-6 pr-6">
       <div className="flex items-center gap-4">
-        <div className="font-abril text-4xl text-blue-500">HuntBoard</div>
+        <div className="font-abril text-4xl text-blue-500 dark:text-gray-200">
+          HuntBoard
+        </div>
         <LastUpdated />
       </div>
 

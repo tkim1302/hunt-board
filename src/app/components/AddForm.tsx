@@ -17,7 +17,9 @@ const AddForm: React.FC = () => {
 
   return (
     <div className="flex flex-col">
-      <h4 className="mb-6 text-2xl font-semibold">Add Job</h4>
+      <h4 className="mb-6 text-2xl font-semibold dark:text-gray-200">
+        Add Job
+      </h4>
       <form
         onSubmit={(event) => {
           handleSubmit(event);
@@ -26,12 +28,39 @@ const AddForm: React.FC = () => {
         action="/api/job/new"
         method="POST"
       >
-        <input name="jobTitle" required placeholder="Job Title (Required)" />
-        <input name="company" required placeholder="Company (Required)" />
-        <input name="postURL" placeholder="Post URL" />
-        <input name="salary" placeholder="Salary" />
-        <input name="location" placeholder="Location" />
-        <input type="date" name="deadline" placeholder="Deadline" />
+        <input
+          className="dark:bg-gray-600 dark:text-gray-200"
+          name="jobTitle"
+          required
+          placeholder="Job Title (Required)"
+        />
+        <input
+          className="dark:bg-gray-600 dark:text-gray-200"
+          name="company"
+          required
+          placeholder="Company (Required)"
+        />
+        <input
+          className="dark:bg-gray-600 dark:text-gray-200"
+          name="postURL"
+          placeholder="Post URL"
+        />
+        <input
+          className="dark:bg-gray-600 dark:text-gray-200"
+          name="salary"
+          placeholder="Salary"
+        />
+        <input
+          className="dark:bg-gray-600 dark:text-gray-200"
+          name="location"
+          placeholder="Location"
+        />
+        <input
+          className="dark:bg-gray-600 dark:text-gray-200"
+          type="date"
+          name="deadline"
+          placeholder="Deadline"
+        />
         <input type="hidden" name="section" value={selectedSection} />
         <div className="flex justify-center">
           <button

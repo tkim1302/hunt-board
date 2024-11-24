@@ -51,7 +51,7 @@ const Section: React.FC<SectionProp> = ({
   };
 
   return (
-    <div className="flex h-[85vh] w-80 min-w-80 flex-col rounded-xl border border-gray-500 shadow-md">
+    <div className="flex h-[85vh] w-80 min-w-80 flex-col rounded-xl border border-gray-500 shadow-md dark:border-none dark:bg-gray-700">
       <div className="flex h-48 min-h-48 flex-col items-center gap-14 pt-10">
         <div className="relative flex w-64 items-center justify-center">
           <SectionTitle
