@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]";
-import { Section as SectionType } from "@/app/types/types";
+import { Job, Section as SectionType } from "@/app/types/types";
 import { connectDB } from "../../../../util/mongodb";
 import { ObjectId } from "mongodb";
 
@@ -17,10 +17,28 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       sections: SectionType[];
     }>({ email });
 
+    const createDefaultJob = (): Job => ({
+      _id: new ObjectId().toString(),
+      jobTitle: "Try Drag and Drop!",
+      company: "Default job card",
+    });
+
     const defaultSections: SectionType[] = [
-      { _id: new ObjectId().toString(), title: "WISHLIST", jobs: [] },
-      { _id: new ObjectId().toString(), title: "APPLIED", jobs: [] },
-      { _id: new ObjectId().toString(), title: "INTERVIEW", jobs: [] },
+      {
+        _id: new ObjectId().toString(),
+        title: "WISHLIST",
+        jobs: [createDefaultJob(), createDefaultJob()],
+      },
+      {
+        _id: new ObjectId().toString(),
+        title: "APPLIED",
+        jobs: [createDefaultJob(), createDefaultJob()],
+      },
+      {
+        _id: new ObjectId().toString(),
+        title: "INTERVIEW",
+        jobs: [createDefaultJob(), createDefaultJob()],
+      },
       { _id: new ObjectId().toString(), title: "OFFER", jobs: [] },
       { _id: new ObjectId().toString(), title: "REJECTED", jobs: [] },
     ];
