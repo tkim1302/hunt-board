@@ -18,9 +18,9 @@ const DropArea: React.FC<DropAreaProps> = ({ onDrop }) => {
         setShowArea(false);
       }}
       onDragOver={(e) => e.preventDefault()}
-      className={`${showArea ? "mt-10 h-20 w-48 rounded-xl border border-gray-500 pb-3 pl-2 pr-2 pt-3 text-center opacity-100 duration-200 ease-in-out" : "opacity-0"} `}
+      className={`${showArea ? "mb-4 flex h-32 w-60 items-center justify-center rounded-xl border border-gray-500 pb-3 pl-2 pr-2 pt-3 font-bold opacity-100 duration-200 ease-in-out" : "opacity-0"} dark:text-gray-200`}
     >
-      Drop Here
+      Drop Here!
     </div>
   );
 };
