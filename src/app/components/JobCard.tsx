@@ -38,7 +38,7 @@ const JobCard: React.FC<JobProp> = ({ job, index, sectionId, refreshJobs }) => {
           {job.company}
         </h3>
       </div>
-      <div className="absolute right-3 top-3 hidden opacity-50 group-hover:block">
+      <div className="absolute right-3 top-3 hidden opacity-50 group-hover:block dark:opacity-100">
         <DeleteJobButton
           jobId={job._id}
           sectionId={sectionId}
