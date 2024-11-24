@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "date-fns": "^4.1.0",
+    "framer-motion": "^7.10.3",
     "mongodb": "^6.10.0",
     "next": "15.0.3",
     "next-auth": "^4.24.10",
