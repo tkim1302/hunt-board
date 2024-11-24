@@ -51,8 +51,8 @@ const Section: React.FC<SectionProp> = ({
   };
 
   return (
-    <div className="flex h-[85vh] w-80 min-w-80 flex-col rounded-xl border border-black">
-      <div className="flex h-48 min-h-48 flex-col items-center gap-14 border-b border-black pt-10">
+    <div className="flex h-[85vh] w-80 min-w-80 flex-col rounded-xl border border-gray-500 shadow-md">
+      <div className="flex h-48 min-h-48 flex-col items-center gap-14 pt-10">
         <div className="relative flex w-64 items-center justify-center">
           <SectionTitle
             sectionId={sectionId}
@@ -69,7 +69,7 @@ const Section: React.FC<SectionProp> = ({
 
         <AddCardButton sectionId={sectionId} />
       </div>
-      <div className="flex flex-col items-center gap-6 overflow-y-auto">
+      <div className="flex flex-col items-center overflow-y-auto">
         <DropArea onDrop={() => onDrop(sectionId, 0)} />
         {jobs.map((job, index) => (
           <div key={job._id}>

@@ -29,7 +29,7 @@ const AddSection: React.FC<AddSectionProps> = ({ refreshJobs }) => {
       onClick={() => handleClick()}
       onMouseOver={() => setIsMouseOn(true)}
       onMouseOut={() => setIsMouseOn(false)}
-      className={`flex h-[85vh] w-80 min-w-80 cursor-pointer flex-col items-center justify-center rounded-xl border border-black ${isMouseOn ? "bg-gray-100" : "bg-white"}`}
+      className={`flex h-[85vh] w-80 min-w-80 cursor-pointer flex-col items-center justify-center rounded-xl border border-gray-500 shadow-md ${isMouseOn ? "bg-gray-100" : "bg-white"}`}
     >
       <div className="flex flex-col items-center text-2xl">
         <h2>Add Section</h2>

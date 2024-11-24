@@ -33,6 +33,7 @@ const DeleteSectionButton: React.FC<DeleteSectionButtonProps> = ({
 
   return (
     <button
+      className="opacity-50"
       onClick={() => deleteSection()}
       onMouseEnter={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
