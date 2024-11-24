@@ -23,7 +23,7 @@ const Profile: React.FC<ProfileProps> = ({ session }) => {
   return (
     <div className="relative flex w-16 items-center justify-center text-center">
       <button
-        className="h-11 w-11 rounded-full bg-orange-500 text-white"
+        className="h-11 w-11 rounded-full bg-blue-500 font-semibold text-white"
         onClick={() => setIsOptionOpen(!isOptionOpen)}
       >
         {getInitials(session?.user!.name)}
