@@ -1,7 +1,6 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import Image from "next/image";
 
 const SignIn: React.FC = () => {
   return (
@@ -11,8 +10,7 @@ const SignIn: React.FC = () => {
       }}
       className="flex cursor-pointer gap-6 rounded-2xl border border-black p-6"
     >
-      <Image src="/googleLogo.svg" width={40} height={40} alt="logo-google" />
-      <h4 className="text-3xl">Sign In With Google</h4>
+      <h4 className="text-4xl font-semibold">LET'S GET STARTED!</h4>
     </div>
   );
 };
