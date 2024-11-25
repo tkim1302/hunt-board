@@ -15,8 +15,8 @@ export default async function RootLayout({
   const mode = (await cookies()).get("mode")?.value;
 
   return (
-    <html lang="en">
-      <body className={mode}>{children}</body>
+    <html lang="en" className={mode}>
+      <body className="dark:bg-gray-800">{children}</body>
     </html>
   );
 }

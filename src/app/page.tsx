@@ -12,7 +12,7 @@ const Home = async () => {
     redirect("/login");
   }
   return (
-    <div className="flex h-screen flex-col dark:bg-gray-800">
+    <div className="flex h-screen flex-col">
       <div className="basis-[10%]">
         <NavBar />
       </div>
