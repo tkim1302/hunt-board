@@ -1,3 +1,4 @@
+import { useState } from "react";
 import fetchSections from "../../../util/fetchSections";
 import submitForm from "../../../util/submitForm";
 import useLastUpdatedTimeStore from "../store/lastUpdatedTimeStore";
@@ -8,10 +9,13 @@ const EditForm: React.FC = () => {
   const { selectedSection, setSectionList } = useSectionStore();
   const { selectedJob, closeModal } = useModalStore();
   const { SetLastUpdated } = useLastUpdatedTimeStore();
+  const [isSaving, setIsSaving] = useState(false);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    setIsSaving(true);
     await submitForm(event, "edit");
-    fetchSections(setSectionList, SetLastUpdated);
+    await fetchSections(setSectionList, SetLastUpdated);
+    setIsSaving(false);
     closeModal();
   };
 
@@ -70,10 +74,11 @@ const EditForm: React.FC = () => {
         <input type="hidden" name="section" value={selectedSection} />
         <div className="flex justify-center">
           <button
-            className="mt-20 h-12 w-20 rounded-xl bg-blue-500 text-2xl text-white"
+            className={`${isSaving ? "opacity-50" : ""} mt-20 h-12 w-32 rounded-xl bg-blue-500 text-2xl text-white`}
             type="submit"
+            disabled={isSaving}
           >
-            Save
+            {isSaving ? "Saving..." : "Save"}
           </button>
         </div>
       </form>
