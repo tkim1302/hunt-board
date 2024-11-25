@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Section from "./Section";
 import AddSection from "./AddSection";
 import useLastUpdatedTimeStore from "../store/lastUpdatedTimeStore";
-import Loading from "./Loading";
 import useSectionStore from "../store/sectionStore";
 import fetchSections from "../../../util/fetchSections";
 
