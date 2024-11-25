@@ -12,7 +12,11 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      fontFamily: {
+        dela: ["Dela Gothic One"],
+      },
     },
   },
   plugins: [],
+  darkMode: "class",
 } satisfies Config;
