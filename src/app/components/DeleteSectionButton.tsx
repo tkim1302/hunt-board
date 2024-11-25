@@ -32,7 +32,7 @@ const DeleteSectionButton: React.FC<DeleteSectionButtonProps> = ({
     } catch {
       alert("Error deleting section");
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
