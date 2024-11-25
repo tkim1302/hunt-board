@@ -60,7 +60,7 @@ const Layout: React.FC = () => {
           HuntBoard
         </motion.h1>
         <motion.h2
-          className="w-3/5 text-center text-5xl"
+          className="w-3/5 text-center text-5xl dark:text-gray-200"
           variants={h2Variants}
           transition={{ duration: 0.5 }}
         >

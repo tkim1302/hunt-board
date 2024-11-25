@@ -8,9 +8,11 @@ const SignIn: React.FC = () => {
       onClick={() => {
         signIn();
       }}
-      className="flex cursor-pointer gap-6 rounded-2xl border border-black p-6"
+      className="flex cursor-pointer gap-6 rounded-2xl border-2 border-black p-6 dark:border-gray-200"
     >
-      <h4 className="text-4xl font-semibold">LET'S GET STARTED!</h4>
+      <h4 className="text-4xl font-semibold dark:text-gray-200">
+        LET'S GET STARTED!
+      </h4>
     </div>
   );
 };
