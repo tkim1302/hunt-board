@@ -12,6 +12,7 @@ interface SectionProp {
   sectionTitle: string;
   jobs: Job[] | [];
   refreshJobs: () => void;
+  isLoading: boolean;
 }
 
 const Section: React.FC<SectionProp> = ({
@@ -19,6 +20,7 @@ const Section: React.FC<SectionProp> = ({
   sectionTitle,
   jobs,
   refreshJobs,
+  isLoading,
 }) => {
   const { activeCard, sourceSection } = useActiveCardStore();
 
@@ -78,6 +80,7 @@ const Section: React.FC<SectionProp> = ({
               index={index}
               sectionId={sectionId}
               refreshJobs={refreshJobs}
+              disabled={isLoading}
             />
             <DropArea onDrop={() => onDrop(sectionId, index + 1)} />
           </div>

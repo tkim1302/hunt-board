@@ -19,10 +19,6 @@ const SectionList = () => {
     setIsLoading(false);
   }, [setSectionList, SetLastUpdated]);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   return (
     <div className="h-full overflow-x-auto">
       <div className="ml-10 flex gap-10">
@@ -32,7 +28,12 @@ const SectionList = () => {
             sectionId={_id}
             sectionTitle={title}
             jobs={jobs!}
-            refreshJobs={() => fetchSections(setSectionList, SetLastUpdated)}
+            refreshJobs={async () => {
+              setIsLoading(true);
+              await fetchSections(setSectionList, SetLastUpdated);
+              setIsLoading(false);
+            }}
+            isLoading={isLoading}
           />
         ))}
         <AddSection

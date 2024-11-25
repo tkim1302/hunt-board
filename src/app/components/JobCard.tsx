@@ -9,9 +9,16 @@ interface JobProp {
   index: number;
   sectionId: string;
   refreshJobs: () => void;
+  disabled: boolean;
 }
 
-const JobCard: React.FC<JobProp> = ({ job, index, sectionId, refreshJobs }) => {
+const JobCard: React.FC<JobProp> = ({
+  job,
+  index,
+  sectionId,
+  refreshJobs,
+  disabled,
+}) => {
   const { setActiveCard, setSourceSection } = useActiveCardStore();
   const { openModal, setEditTrue, setSelectedJob } = useModalStore();
   const { setSection } = useSectionStore();
@@ -19,18 +26,20 @@ const JobCard: React.FC<JobProp> = ({ job, index, sectionId, refreshJobs }) => {
   return (
     <div
       onClick={() => {
-        openModal();
-        setEditTrue();
-        setSelectedJob(job);
-        setSection(sectionId);
+        if (!disabled) {
+          openModal();
+          setEditTrue();
+          setSelectedJob(job);
+          setSection(sectionId);
+        }
       }}
-      draggable
+      draggable={!disabled}
       onDragStart={() => {
         setSourceSection(sectionId);
         setActiveCard(index);
       }}
       onDragEnd={() => setActiveCard(null)}
-      className="group mb-4 flex h-20 w-60 cursor-grab rounded-xl border border-gray-500 bg-white pb-3 pl-2 pr-10 pt-3 shadow-md transition-transform duration-200 ease-in-out hover:-translate-y-2 hover:bg-blue-50 dark:border-none dark:bg-gray-500 dark:hover:bg-gray-600"
+      className={`${disabled ? "pointer-events-none cursor-not-allowed opacity-50" : "cursor-grab hover:-translate-y-2 hover:bg-blue-50"} group mb-4 flex h-20 w-60 rounded-xl border border-gray-500 bg-white pb-3 pl-2 pr-10 pt-3 shadow-md transition-transform duration-200 ease-in-out dark:border-none dark:bg-gray-500 dark:hover:bg-gray-600`}
     >
       <div className="overflow-hidden border-l-4 border-blue-100 pl-3 group-hover:border-blue-500">
         <h2 className="truncate text-xl dark:text-blue-300">{job.jobTitle}</h2>
