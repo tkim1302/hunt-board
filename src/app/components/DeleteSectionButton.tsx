@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import useLoadingStore from "../store/loadingStore";
 
 interface DeleteSectionButtonProps {
   sectionId: string;
-  refreshJobs: () => void;
+  refreshJobs: () => Promise<void>;
 }
 
 const DeleteSectionButton: React.FC<DeleteSectionButtonProps> = ({
@@ -13,8 +14,10 @@ const DeleteSectionButton: React.FC<DeleteSectionButtonProps> = ({
   refreshJobs,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { setIsLoading } = useLoadingStore();
 
   const deleteSection = async () => {
+    setIsLoading(true);
     try {
       const response = await fetch("/api/section/delete", {
         method: "DELETE",
@@ -25,9 +28,11 @@ const DeleteSectionButton: React.FC<DeleteSectionButtonProps> = ({
       if (!response.ok) {
         throw new Error("Failed to delete section");
       }
-      refreshJobs();
+      await refreshJobs();
     } catch {
       alert("Error deleting section");
+    } finally {
+      setIsLoading(true);
     }
   };
 

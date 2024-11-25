@@ -1,14 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Section from "./Section";
 import AddSection from "./AddSection";
 import useLastUpdatedTimeStore from "../store/lastUpdatedTimeStore";
 import useSectionStore from "../store/sectionStore";
 import fetchSections from "../../../util/fetchSections";
+import useLoadingStore from "../store/loadingStore";
 
 const SectionList = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  const { setIsLoading } = useLoadingStore();
 
   const { sectionList, setSectionList } = useSectionStore();
   const { SetLastUpdated } = useLastUpdatedTimeStore();
@@ -16,7 +17,7 @@ const SectionList = () => {
   useEffect(() => {
     fetchSections(setSectionList, SetLastUpdated);
     setIsLoading(false);
-  }, [setSectionList, SetLastUpdated]);
+  }, [setSectionList, SetLastUpdated, setIsLoading]);
 
   return (
     <div className="h-full overflow-x-auto">
@@ -28,11 +29,8 @@ const SectionList = () => {
             sectionTitle={title}
             jobs={jobs!}
             refreshJobs={async () => {
-              setIsLoading(true);
               await fetchSections(setSectionList, SetLastUpdated);
-              setIsLoading(false);
             }}
-            isLoading={isLoading}
           />
         ))}
         <AddSection

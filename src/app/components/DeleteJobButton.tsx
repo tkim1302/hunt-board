@@ -2,11 +2,12 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import useLoadingStore from "../store/loadingStore";
 
 interface DeleteJobButtonProps {
   jobId: string;
   sectionId: string;
-  refreshJobs: () => void;
+  refreshJobs: () => Promise<void>;
 }
 
 const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
@@ -15,9 +16,11 @@ const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
   refreshJobs,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const { setIsLoading } = useLoadingStore();
 
   const deleteCard = async () => {
     try {
+      setIsLoading(true);
       const response = await fetch("/api/job/delete", {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
@@ -27,9 +30,11 @@ const DeleteJobButton: React.FC<DeleteJobButtonProps> = ({
       if (!response.ok) {
         throw new Error("Failed to delete job");
       }
-      refreshJobs();
+      await refreshJobs();
     } catch {
       alert("Error deleting job");
+    } finally {
+      setIsLoading(false);
     }
   };
 

@@ -6,13 +6,13 @@ import { Job } from "@/app/types/types";
 import useActiveCardStore from "../store/activeCardStore";
 import SectionTitle from "./SectionTitle";
 import DeleteSectionButton from "./DeleteSectionButton";
+import useLoadingStore from "../store/loadingStore";
 
 interface SectionProp {
   sectionId: string;
   sectionTitle: string;
   jobs: Job[] | [];
-  refreshJobs: () => void;
-  isLoading: boolean;
+  refreshJobs: () => Promise<void>;
 }
 
 const Section: React.FC<SectionProp> = ({
@@ -20,9 +20,9 @@ const Section: React.FC<SectionProp> = ({
   sectionTitle,
   jobs,
   refreshJobs,
-  isLoading,
 }) => {
   const { activeCard, sourceSection } = useActiveCardStore();
+  const { setIsLoading } = useLoadingStore();
 
   const onDrop = async (
     destinationSection: string,
@@ -31,6 +31,7 @@ const Section: React.FC<SectionProp> = ({
     const sourceIndex = activeCard;
 
     try {
+      setIsLoading(true);
       const response = await fetch("/api/job/update", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
@@ -46,9 +47,11 @@ const Section: React.FC<SectionProp> = ({
         throw new Error("Failed to update job position");
       }
 
-      refreshJobs();
+      await refreshJobs();
     } catch {
       alert("Error fetching data. Please try again later");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -64,7 +67,7 @@ const Section: React.FC<SectionProp> = ({
           <div className="absolute right-0">
             <DeleteSectionButton
               sectionId={sectionId}
-              refreshJobs={refreshJobs}
+              refreshJobs={async () => await refreshJobs()}
             />
           </div>
         </div>
@@ -80,7 +83,6 @@ const Section: React.FC<SectionProp> = ({
               index={index}
               sectionId={sectionId}
               refreshJobs={refreshJobs}
-              disabled={isLoading}
             />
             <DropArea onDrop={() => onDrop(sectionId, index + 1)} />
           </div>
