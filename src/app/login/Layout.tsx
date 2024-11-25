@@ -42,7 +42,7 @@ const Layout: React.FC = () => {
     };
 
     loop();
-  }, []);
+  }, [controls]);
 
   return (
     <motion.div

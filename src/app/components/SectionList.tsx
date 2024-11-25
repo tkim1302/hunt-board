@@ -17,7 +17,7 @@ const SectionList = () => {
   useEffect(() => {
     fetchSections(setSectionList, SetLastUpdated);
     setIsLoading(false);
-  }, []);
+  }, [setSectionList, SetLastUpdated]);
 
   if (isLoading) {
     return <Loading />;
