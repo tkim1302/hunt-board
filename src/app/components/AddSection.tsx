@@ -40,7 +40,7 @@ const AddSection: React.FC<AddSectionProps> = ({ refreshJobs }) => {
         ) : (
           <div>
             <h2>Add Section</h2>
-            <h2>+</h2>
+            <h2 className="text-center">+</h2>
           </div>
         )}
       </div>
