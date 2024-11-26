@@ -10,13 +10,16 @@ import useLoadingStore from "../store/loadingStore";
 
 const SectionList = () => {
   const { setIsLoading } = useLoadingStore();
-
   const { sectionList, setSectionList } = useSectionStore();
   const { SetLastUpdated } = useLastUpdatedTimeStore();
 
   useEffect(() => {
-    fetchSections(setSectionList, SetLastUpdated);
-    setIsLoading(false);
+    const fetchOnMount = async () => {
+      await fetchSections(setSectionList, SetLastUpdated);
+      setIsLoading(false);
+    };
+
+    fetchOnMount();
   }, [setSectionList, SetLastUpdated, setIsLoading]);
 
   return (
