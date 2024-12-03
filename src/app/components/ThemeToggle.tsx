@@ -41,17 +41,17 @@ const ThemeToggle: React.FC = () => {
     >
       {mode === "light" ? (
         <Image
-          src="/darkModeButton.png"
+          src="/darkModeButton.webp"
           width={55}
           height={30}
-          alt="darkModeButton.png"
+          alt="darkModeButton.webp"
         />
       ) : (
         <Image
-          src="/lightModeButton.png"
+          src="/lightModeButton.webp"
           width={55}
           height={30}
-          alt="darkModeButton.png"
+          alt="darkModeButton.webp"
         />
       )}
     </button>

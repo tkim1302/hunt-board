@@ -45,17 +45,17 @@ const DeleteSectionButton: React.FC<DeleteSectionButtonProps> = ({
     >
       {!isHovered ? (
         <Image
-          src="/trashBin_light.png"
+          src="/trashBin_light.webp"
           width={20}
           height={20}
-          alt="logo-trash-bin.png"
+          alt="logo-trash-bin.webp"
         />
       ) : (
         <Image
-          src="/trashBin_light_hover.png"
+          src="/trashBin_light_hover.webp"
           width={20}
           height={20}
-          alt="logo-trash-bin.png"
+          alt="logo-trash-bin.webp"
         />
       )}
     </button>
