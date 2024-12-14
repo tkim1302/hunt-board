@@ -43,42 +43,45 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 ### Signing In
 
-  1. Click `LET'S GET STARTED` button to sign in.
-  2. Sign in with either Google or Github.
+1. Click `LET'S GET STARTED` button to sign in.
+2. Sign in with either Google or Github.
 
 ### Adding Job Cards(Applications)
 
-  1. Click the `+` button below each stage title to create a new job entry.
-  2. Fill in the job details(Job title and Company are required) and save.
+1. Click the `+` button below each stage title to create a new job entry.
+2. Fill in the job details(Job title and Company are required) and save.
 
 ### Managing Applications
 
-  1. Drag and drop applications across different stages (e.g., from `Applied` to `Interview`) based on their current status.
-  2. Click on a Job Card to edit or see details.
-  3. Hover on a Job Card to see delete button.
+1. Drag and drop applications across different stages (e.g., from `Applied` to `Interview`) based on their current status.
+2. Click on a Job Card to edit or see details.
+3. Hover on a Job Card to see delete button.
 
 ### Changing Themes
 
-  1. Click the theme button on the top right corner to switch between light / dark mode.
+1. Click the theme button on the top right corner to switch between light / dark mode.
 
 ### Signing Out
-  1. Click profile on the top right corner to see Sign out option.
+
+1. Click profile on the top right corner to see Sign out option.
 
 ## Tech Stack
+
 ### Frontend
-- React.js
+
+- React
 - Typescript
 - Tailwind CSS
+- Framer Motion
 
 ### Backend
-- 
+
+- Next.js
+
+### Database
+
 - MongoDB
 
 ### Authentication
+
 - NextAuth.js (Google / Github Authentication)
-
-### Bundler
-- 
-
-### Others
-- Framer Motion
