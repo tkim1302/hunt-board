@@ -5,7 +5,6 @@ A powerful tool to track your job applications.
 ## Table of Contents
 
 - [Overview](#overview)
-- [Features](#features)
 - [Demo: See HuntBoard in Action](#demo-see-huntboard-in-action)
 - [Usage](#usage)
 - [Tech Stack](#tech-stack)
@@ -20,6 +19,38 @@ In today's competitive job market, keeping track of multiple applications, inter
 - Customize stages to fit all individuals' workflows.
 
 ## Demo: See HuntBoard in Action
+
+### Sign-In
+
+https://github.com/user-attachments/assets/1d3843b7-c82c-44ce-b559-8aeb0e285920
+
+### Dark Mode / Light Mode
+
+https://github.com/user-attachments/assets/82d9dfcc-33ac-4cee-857e-4a8dd044a496
+
+### Drag-and-Drop
+
+https://github.com/user-attachments/assets/694e4a5b-7d70-4581-9296-c66690645873
+
+### Data Update
+
+- Stage Addition/Deletion, Stage Title Update, Stage , Last-Updated-Time, Job Card Deletion
+  
+
+https://github.com/user-attachments/assets/db055807-798d-4541-bb90-27fdcf46f34b
+
+
+- Job Addition/Details/Edit
+
+
+https://github.com/user-attachments/assets/54ac881e-e91a-4852-93d3-469bf89e153c
+
+
+
+
+
+
+
 
 ## Getting Started
 
